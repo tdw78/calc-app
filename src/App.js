@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Button from './Components/Button.js';
 import Operator from './Components/Operator.js';
+import Display from './Components/Display';
 
 class App extends Component {
   render() {
@@ -9,7 +10,11 @@ class App extends Component {
     <div className="App">
       <div className="calc-display">
 
-      <div className="button-row">
+        <div className="button-row">
+          <Display></Display>
+        </div>
+
+        <div className="button-row">
           <Button>AC</Button>
           <Button>+/-</Button>
           <Button>%</Button>
