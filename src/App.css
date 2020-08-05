@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 100px;
-  height: 100vh;
+  height: 70vh;
   width: 100%;
 }
 
@@ -13,13 +13,17 @@
   flex: 1;
   justify-content: center;
   align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: lighter;
   font-size: 1.4em;
   background-color: grey;
   color: white;
-  outline: 1px solid #888;
+  outline: 1px solid black;
 }
 
+.button:hover {
+  background-color: #A195EE;
+}
 
 .operator {
   display: flex;
@@ -27,11 +31,16 @@
   flex: 1;
   justify-content: center;
   align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   font-size: 1.4em;
   background-color: orange;
   color: white;
-  outline: 1px solid #888;
+  outline: 1px solid black;
+}
+
+.operator:hover {
+  background-color: navy;
 }
 
 .clear {
@@ -40,11 +49,16 @@
   flex: 1;
   justify-content: center;
   align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: lighter;
   font-size: 1.4em;
   background-color: #2F4F4F;
   color: white;
-  outline: 1px solid #888;
+  outline: 1px solid black;
+}
+
+.clear:hover {
+  background-color: red;
 }
 
 .function {
@@ -53,24 +67,24 @@
   flex: 1;
   justify-content: center;
   align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: lighter;
   font-size: 1.4em;
   background-color: #2F4F4F;
   color: white;
-  outline: 1px solid #888;
+  outline: 1px solid black;
 }
 
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
+.function:hover {
+  background-color: navy;
 }
+
 .calc-display {
   width: 400px;
   height: 600px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .button-row {
   display: flex;
   width: 100%;

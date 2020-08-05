@@ -12,7 +12,6 @@ class App extends Component {
     this.state = {
       display: "",
       prevNum: "",
-      currNum: "",
       operator: ""
     };
   }
@@ -40,50 +39,36 @@ clearDisplay = () => {
 }
 
 add = () => {
-  this.state.prevNum = this.state.display
+  this.setState({ prevNum: this.state.display })
   this.setState({ display: "" })
-  this.state.operator = "plus"
+  this.setState({ operator: "plus" })
 }
 
 subtract = () => {
   if(!this.state.display){
     this.setState({ display: "-"})
   } else {
-     this.state.prevNum = this.state.display
+     this.setState({ prevNum: this.state.display })
      this.setState({ display: "" })
-     this.state.operator = "subtract"
+     this.setState({ operator: "subtract" })
   }
 }
 
 divide = () => {
-  this.state.prevNum = this.state.display
+  this.setState({ prevNum: this.state.display })
   this.setState({ display: "" })
-  this.state.operator = "divide"
+  this.setState({ operator: "divide" })
 }
 
 multiply = () => {
-  this.state.prevNum = this.state.display
+  this.setState({ prevNum: this.state.display })
   this.setState({ display: "" })
-  this.state.operator = "multiply"
+  this.setState({ operator: "multiply" })
 }
 
 percent = () => {
   this.setState({ display: this.state.display / 100 })
 }
-
-// toggleVal = () => {
-//   if(parseFloat(this.state.display) > 0 ){
-//     this.setState({ display: parseFloat(this.state.display) -
-//       parseFloat(this.state.display) - parseFloat(this.state.display)
-//     })
-//   } else if (parseFloat(this.state.display) < 0) {
-//     this.setState({ display: parseFloat(this.state.display) +
-//       parseFloat(this.state.display) + parseFloat(this.state.display)
-//     })
-//   }
-// }
-
-
 
 toggleVal = () => {
   if(parseFloat(this.state.display) > 0 ) {
@@ -93,86 +78,71 @@ toggleVal = () => {
   }
 }
 
-
-
-
 evaluate = () => {
-  this.state.currNum = this.state.display
+  let currNum = this.state.display
   if(this.state.operator === "plus"){
     this.setState({ 
       display: parseFloat(this.state.prevNum) + 
-               parseFloat(this.state.currNum) })
+               parseFloat(currNum) })
   }
-
   if(this.state.operator === "subtract"){
     this.setState({ 
       display: parseFloat(this.state.prevNum) - 
-               parseFloat(this.state.currNum) })
+               parseFloat(currNum) })
   }
-
   if(this.state.operator === "divide"){
     this.setState({ 
       display: parseFloat(this.state.prevNum) / 
-               parseFloat(this.state.currNum) })
+               parseFloat(currNum) })
   }
-
   if(this.state.operator === "multiply"){
     this.setState({ 
       display: parseFloat(this.state.prevNum) * 
-               parseFloat(this.state.currNum) })
+               parseFloat(currNum) })
   }
-
 }
 
   render() {
-
-  return (
-    <div className="App">
-      <div className="calc-display">
-
-        <div className="button-row">
-          <Display>{this.state.display}</Display>
+    return (
+      <div className="App">
+        <div className="calc-display">
+          <div className="button-row">
+            <Display>{this.state.display}</Display>
+          </div>
+          <div className="button-row">
+            <Clear handleClear={this.clearDisplay}>AC</Clear>
+            <Function handleClick={this.toggleVal}>+/-</Function>
+            <Function handleClick={this.percent}>%</Function>
+            <Operator handleClick={this.divide}>÷</Operator>
+          </div>
+          <div className="button-row">
+            <Button handleClick={this.addToDisplay}>7</Button>
+            <Button handleClick={this.addToDisplay}>8</Button>
+            <Button handleClick={this.addToDisplay}>9</Button>
+            <Operator handleClick={this.multiply}>X</Operator>
+          </div>
+          <div className="button-row">
+            <Button handleClick={this.addToDisplay}>4</Button>
+            <Button handleClick={this.addToDisplay}>5</Button>
+            <Button handleClick={this.addToDisplay}>6</Button>
+            <Operator handleClick={this.subtract}>-</Operator>
+          </div>
+          <div className="button-row">
+            <Button handleClick={this.addToDisplay}>1</Button>
+            <Button handleClick={this.addToDisplay}>2</Button>
+            <Button handleClick={this.addToDisplay}>3</Button>
+            <Operator handleClick={this.add}>+</Operator>
+          </div>
+          <div className="button-row">
+            <Button></Button>
+            <Button handleClick={this.addZeroToDisplay}>0</Button>     
+            <Button handleClick={this.addDecimalToDisplay}>.</Button>
+            <Operator handleClick={this.evaluate}>=</Operator>
+          </div>
         </div>
-
-        <div className="button-row">
-          <Clear handleClear={this.clearDisplay}>AC</Clear>
-          <Function handleClick={this.toggleVal}>+/-</Function>
-          <Function handleClick={this.percent}>%</Function>
-          <Operator handleClick={this.divide}>/</Operator>
-        </div>
-        
-        <div className="button-row">
-          <Button handleClick={this.addToDisplay}>7</Button>
-          <Button handleClick={this.addToDisplay}>8</Button>
-          <Button handleClick={this.addToDisplay}>9</Button>
-          <Operator handleClick={this.multiply}>X</Operator>
-        </div>
-
-        <div className="button-row">
-          <Button handleClick={this.addToDisplay}>4</Button>
-          <Button handleClick={this.addToDisplay}>5</Button>
-          <Button handleClick={this.addToDisplay}>6</Button>
-          <Operator handleClick={this.subtract}>-</Operator>
-        </div>
-
-        <div className="button-row">
-          <Button handleClick={this.addToDisplay}>1</Button>
-          <Button handleClick={this.addToDisplay}>2</Button>
-          <Button handleClick={this.addToDisplay}>3</Button>
-          <Operator handleClick={this.add}>+</Operator>
-        </div>
-
-        <div className="button-row">
-          <Button></Button>
-          <Button handleClick={this.addZeroToDisplay}>0</Button>     
-          <Button handleClick={this.addDecimalToDisplay}>.</Button>
-          <Operator handleClick={this.evaluate}>=</Operator>
-        </div>
-
       </div>
-    </div>
-  );
- }
+    );
+  }
 }
 
 export default App;
