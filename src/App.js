@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   addZeroToDisplay = val => {
-    if(!this.state.display.length){
+    if(!this.state.display){
       this.setState({ display: "" })
     } else {
       this.setState({ display: this.state.display + val });
@@ -46,9 +46,13 @@ add = () => {
 }
 
 subtract = () => {
-  this.state.prevNum = this.state.display
-  this.setState({ display: "" })
-  this.state.operator = "subtract"
+  if(!this.state.display){
+    this.setState({ display: "-"})
+  } else {
+     this.state.prevNum = this.state.display
+     this.setState({ display: "" })
+     this.state.operator = "subtract"
+  }
 }
 
 divide = () => {
@@ -62,6 +66,35 @@ multiply = () => {
   this.setState({ display: "" })
   this.state.operator = "multiply"
 }
+
+percent = () => {
+  this.setState({ display: this.state.display / 100 })
+}
+
+// toggleVal = () => {
+//   if(parseFloat(this.state.display) > 0 ){
+//     this.setState({ display: parseFloat(this.state.display) -
+//       parseFloat(this.state.display) - parseFloat(this.state.display)
+//     })
+//   } else if (parseFloat(this.state.display) < 0) {
+//     this.setState({ display: parseFloat(this.state.display) +
+//       parseFloat(this.state.display) + parseFloat(this.state.display)
+//     })
+//   }
+// }
+
+
+
+toggleVal = () => {
+  if(parseFloat(this.state.display) > 0 ) {
+    this.setState({ display:  "-" + this.state.display})
+  } else if(parseFloat(this.state.display) < 0 ){
+      this.setState({ display: Math.abs(this.state.display) })
+  }
+}
+
+
+
 
 evaluate = () => {
   this.state.currNum = this.state.display
@@ -103,8 +136,8 @@ evaluate = () => {
 
         <div className="button-row">
           <Clear handleClear={this.clearDisplay}>AC</Clear>
-          <Function>+/-</Function>
-          <Function>%</Function>
+          <Function handleClick={this.toggleVal}>+/-</Function>
+          <Function handleClick={this.percent}>%</Function>
           <Operator handleClick={this.divide}>/</Operator>
         </div>
         
