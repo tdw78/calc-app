@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Button from './Components/Button.js';
-import Operator from './Components/Operator.js';
+import Button from './Components/Button';
+import Operator from './Components/Operator';
 import Display from './Components/Display';
+import Clear from './Components/Clear';
+import Function from './Components/Function'
 
 class App extends Component {
   render() {
@@ -15,9 +17,9 @@ class App extends Component {
         </div>
 
         <div className="button-row">
-          <Button>AC</Button>
-          <Button>+/-</Button>
-          <Button>%</Button>
+          <Clear>AC</Clear>
+          <Function>+/-</Function>
+          <Function>%</Function>
           <Operator>/</Operator>
         </div>
         
